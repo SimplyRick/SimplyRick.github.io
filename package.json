@@ -1,26 +1,41 @@
 {
-  "name": "ricks-portfolio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@iconoir/vue": "^7.11.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "tailwindcss": "^4.1.18",
-    "vue": "^3.5.24"
-  },
-  "devDependencies": {
-    "@types/node": "^24.10.1",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.8.1",
-    "daisyui": "^5.5.14",
-    "typescript": "~5.9.3",
-    "vite": "^7.2.4",
-    "vue-tsc": "^3.1.4"
-  }
+	"name": "ricks-portfolio",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"prettier": "./configs/prettierrc.config.ts",
+	"eslintConfig": {
+		"extends": "./configs/eslintrc.config.ts"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc -b && vite build",
+		"preview": "vite preview",
+		"lint": "eslint --ext .ts,.tsx,.vue src",
+		"format": "prettier --write .",
+		"check-format": "prettier --check ."
+	},
+	"dependencies": {
+		"@fontsource/pt-sans": "^5.2.8",
+		"@iconoir/vue": "^7.11.0",
+		"@tailwindcss/vite": "^4.1.18",
+		"tailwindcss": "^4.1.18",
+		"vue": "^3.5.24"
+	},
+	"devDependencies": {
+		"@types/node": "^24.10.1",
+		"@typescript-eslint/eslint-plugin": "^8.50.0",
+		"@typescript-eslint/parser": "^8.50.0",
+		"@vitejs/plugin-vue": "^6.0.1",
+		"@vue/tsconfig": "^0.8.1",
+		"daisyui": "^5.5.14",
+		"eslint": "^9.39.2",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-vue": "^10.6.2",
+		"prettier": "^3.7.4",
+		"typescript": "~5.9.3",
+		"vite": "^7.2.4",
+		"vue-eslint-parser": "^10.2.0",
+		"vue-tsc": "^3.1.4"
+	}
 }
