@@ -1,8 +1,10 @@
-@import 'pt-sans-font';
-@import 'tailwindcss';
-@plugin "daisyui";
+@import '@fontsource/pt-sans';
+@import './colors.css';
 
 :root {
-	font-family: 'PT Sans';
-	font-size: 24px;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 16px;
+	color: black;
+
+	background-color: var(--bg-base);
 }

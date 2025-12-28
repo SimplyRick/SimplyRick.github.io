@@ -1,0 +1,40 @@
+:root {
+	/* Primary Colors */
+	--color-primary: #912f56;
+	--color-primary-dark: #6b2340;
+	--color-primary-light: #c97599;
+
+	/* Secondary Colors */
+	--color-secondary: #8b5cf6;
+	--color-secondary-dark: #7c3aed;
+	--color-secondary-light: #a78bfa;
+
+	/* Tertiary Colors */
+	--color-tertiary: #5a3568;
+	--color-tertiary-dark: #3d244a;
+	--color-tertiary-light: #8b6d9c;
+
+	/* Neutral Colors */
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	/* Background Colors */
+	--bg-base: #f8f4f9; /* Ghost White */
+
+	/* Text Colors */
+	--text-primary: #071013;
+	--text-secondary: #5a6371;
+	--text-tertiary: #8891a0;
+	--text-inverse: #ffffff;
+
+	/* Border Colors */
+	--border-light: var(--color-primary-light);
+	--border-medium: var(--color-primary);
+	--border-dark: var(--color-primary-dark);
+
+	/* Status Colors */
+	--status-success: #5fdd9d;
+	--status-warning: #edae49;
+	--status-error: #d1495b;
+	--status-info: #00798c;
+}
