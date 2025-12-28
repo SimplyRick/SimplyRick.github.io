@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { Home, User, MessageText, Menu } from '@iconoir/vue'
 
 const routes = [
@@ -40,11 +41,11 @@ const toggleMenu = () => {
 						v-for="route in routes"
 						:key="route.path"
 						class="nav__menu-item">
-						<a
-							:href="route.path"
+						<RouterLink
+							:to="route.path"
 							class="nav__menu-link">
 							<component :is="route.icon" />{{ route.name }}
-						</a>
+						</RouterLink>
 					</li>
 				</ul>
 
@@ -57,11 +58,12 @@ const toggleMenu = () => {
 							v-for="route in routes"
 							:key="route.path"
 							class="nav__mobile-item">
-							<a
-								:href="route.path"
-								class="nav__mobile-link">
+							<RouterLink
+								:to="route.path"
+								class="nav__mobile-link"
+								@click="isMenuOpen = false">
 								<component :is="route.icon" />{{ route.name }}
-							</a>
+							</RouterLink>
 						</li>
 					</ul>
 				</div>
