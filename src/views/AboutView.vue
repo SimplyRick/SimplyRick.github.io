@@ -33,6 +33,7 @@ import profilePicture from '@/assets/profile-picture.png'
 		</RCard>
 		<RCard
 			:title="'About Me'"
+			:subtitle="'Frontend Developer'"
 			:card-size="'medium'"
 			:avatar-source="profilePicture">
 			<p>
@@ -57,6 +58,7 @@ import profilePicture from '@/assets/profile-picture.png'
 		</RCard>
 		<RCard
 			:title="'About Me'"
+			:subtitle="'Frontend Developer'"
 			:card-size="'large'"
 			:avatar-source="profilePicture"
 			:avatar-redirect="'https://simplyrick.github.io'">
