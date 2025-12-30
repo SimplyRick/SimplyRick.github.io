@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+const ALLOWED_TYPES = new Set(['small', 'medium', 'large'])
+
 export default {
 	name: 'RCard',
 	props: {
@@ -21,13 +23,14 @@ export default {
 		/**
 		 * Size of the card: small, medium, large
 		 * @type {String}
-		 * small = width 29% height 300px
-		 * medium = width 46% height 250px
-		 * large = width 100% height 200px (default)
+		 * small = width 100%/3, height 300px
+		 * medium = width 100%/2, height 250px
+		 * large = width 100%, height 200px (default)
 		 */
 		cardSize: {
 			type: String,
-			default: 'large'
+			required: true,
+			validator: (value: string) => ALLOWED_TYPES.has(value)
 		}
 	}
 }
@@ -47,19 +50,15 @@ export default {
 			</div>
 
 			<!-- Avatar part -->
-			<a
-				v-if="avatarRedirect && avatarSource"
+			<component
+				:is="avatarRedirect ? 'a' : 'span'"
+				v-if="avatarSource"
 				:href="avatarRedirect">
 				<img
 					:class="`avatar avatar--${cardSize}`"
 					:src="avatarSource"
 					alt="Avatar" />
-			</a>
-			<img
-				v-else-if="avatarSource"
-				:class="`avatar avatar--${cardSize}`"
-				:src="avatarSource"
-				alt="Avatar" />
+			</component>
 		</header>
 		<span
 			v-if="title"

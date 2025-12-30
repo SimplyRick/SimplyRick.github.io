@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Home, User, MessageText, Menu } from '@iconoir/vue'
+import RLogo from '@/components/RLogo.vue'
 
 const routes = [
 	{ icon: Home, name: 'Home', path: '/' },
@@ -22,12 +23,7 @@ const toggleMenu = () => {
 			<nav class="nav">
 				<!-- Navbar Header -->
 				<div class="nav__header">
-					<div class="nav__logo">
-						<div class="nav__logo-initials">
-							<span>SR</span>
-						</div>
-						<span>// PORTFOLIO</span>
-					</div>
+					<RLogo type="logoFull" />
 					<button
 						class="nav__burger"
 						aria-label="Toggle menu"
@@ -155,36 +151,6 @@ const toggleMenu = () => {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
-	}
-
-	&__logo {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-family: 'Monomaniac One', sans-serif;
-		font-weight: 400;
-		font-style: normal;
-		font-size: 1.5rem;
-		font-weight: bold;
-		white-space: nowrap;
-		margin: 0;
-		padding: 0;
-		gap: 0.5rem;
-
-		&-initials {
-			width: 2rem;
-			height: 2rem;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background-color: var(--color-primary);
-			color: var(--bg-base);
-			border-radius: 4px;
-		}
-		span {
-			margin-top: -4px;
-			padding: 0;
-		}
 	}
 
 	&__burger {
