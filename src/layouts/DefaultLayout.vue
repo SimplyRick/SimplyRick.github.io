@@ -218,7 +218,7 @@ const toggleMenu = () => {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
 	.nav {
 		&__menu {
 			display: none;

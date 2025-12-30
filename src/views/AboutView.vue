@@ -20,6 +20,13 @@ import profilePicture from '@/assets/profile-picture.png'
 			:avatar-source="profilePicture">
 			<p>
 				Hello! I'm a passionate developer who loves creating beautiful and
+				functional web applications. Hello! I'm a passionate developer who loves
+				creating beautiful and functional web applications. Hello! I'm a
+				passionate developer who loves creating beautiful and functional web
+				applications. Hello! I'm a passionate developer who loves creating
+				beautiful and functional web applications. Hello! I'm a passionate
+				developer who loves creating beautiful and functional web applications.
+				Hello! I'm a passionate developer who loves creating beautiful and
 				functional web applications.
 			</p>
 		</RCard>
