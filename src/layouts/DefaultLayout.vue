@@ -1,13 +1,26 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { Home, User, MessageText, Menu } from '@iconoir/vue'
+import { Home, User, MessageText, Menu, Linkedin, Github } from '@iconoir/vue'
 import RLogo from '@/components/RLogo.vue'
 
 const routes = [
 	{ icon: Home, name: 'Home', path: '/' },
 	{ icon: User, name: 'About', path: '/about' },
 	{ icon: MessageText, name: 'Contact', path: '/contact' }
+]
+
+const socials = [
+	{
+		icon: Github,
+		name: 'GitHub',
+		path: 'https://github.com/SimplyRick'
+	},
+	{
+		icon: Linkedin,
+		name: 'LinkedIn',
+		path: 'https://www.linkedin.com/in/ptomczak-1106'
+	}
 ]
 
 const isMenuOpen = ref(false)
@@ -20,12 +33,12 @@ const toggleMenu = () => {
 <template>
 	<div class="layout">
 		<header class="layout__header">
-			<nav class="nav">
+			<nav class="layout__header-nav">
 				<!-- Navbar Header -->
-				<div class="nav__header">
+				<div class="layout__header-nav-header">
 					<RLogo type="logoFull" />
 					<button
-						class="nav__burger"
+						class="layout__header-nav-burger"
 						aria-label="Toggle menu"
 						@click="toggleMenu">
 						<Menu :stroke-width="2" />
@@ -33,14 +46,14 @@ const toggleMenu = () => {
 				</div>
 
 				<!-- Desktop Menu -->
-				<ul class="nav__menu">
+				<ul class="layout__header-nav-menu">
 					<li
 						v-for="route in routes"
 						:key="route.path"
-						class="nav__menu-item">
+						class="layout__header-nav-menu-item">
 						<RouterLink
 							:to="route.path"
-							class="nav__menu-link">
+							class="layout__header-nav-menu-link">
 							<component :is="route.icon" />{{ route.name }}
 						</RouterLink>
 					</li>
@@ -49,15 +62,15 @@ const toggleMenu = () => {
 				<!-- Mobile Menu -->
 				<div
 					v-if="isMenuOpen"
-					class="nav__mobile">
-					<ul class="nav__mobile-list">
+					class="layout__header-nav-mobile">
+					<ul class="layout__header-nav-mobile-list">
 						<li
 							v-for="route in routes"
 							:key="route.path"
-							class="nav__mobile-item">
+							class="layout__header-nav-mobile-item">
 							<RouterLink
 								:to="route.path"
-								class="nav__mobile-link"
+								class="layout__header-nav-mobile-link"
 								@click="isMenuOpen = false">
 								<component :is="route.icon" />{{ route.name }}
 							</RouterLink>
@@ -74,8 +87,30 @@ const toggleMenu = () => {
 		</main>
 
 		<footer class="layout__footer">
-			<div class="layout__footer-content">
-				<span> &copy; 2025 SimplyRick </span>
+			<div class="layout__footer-wrapper">
+				<div class="layout__footer-copyright">
+					<span> &copy; 2025 SimplyRick </span>
+				</div>
+				<div>
+					<RLogo type="logoIcon" />
+				</div>
+				<div class="layout__footer-social">
+					<ul class="layout__footer-social-list">
+						<li
+							v-for="social in socials"
+							:key="social.name"
+							class="layout__footer-social-item">
+							<a
+								:href="social.path"
+								class="layout__footer-social-link"
+								target="_blank"
+								rel="noopener noreferrer"
+								:tooltip="`${social.name}`">
+								<component :is="social.icon" />
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</footer>
 	</div>
@@ -114,19 +149,52 @@ const toggleMenu = () => {
 		justify-content: center;
 		align-items: center;
 
-		&-content {
+		&-wrapper {
 			display: flex;
-			justify-content: center;
+			justify-content: space-between;
 			align-items: center;
+			padding: 0 1rem;
 			border-top: 1px solid var(--border-medium);
+			width: 57%;
+		}
+
+		&-copyright {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
 			padding-top: 1rem;
 			padding-bottom: 1rem;
-			width: 57%;
+			width: calc(100% / 3);
+		}
+
+		&-social {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+			width: calc(100% / 3);
+
+			&-list {
+				display: flex;
+				gap: 1rem;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			&-link {
+				color: var(--text-primary);
+
+				&:hover {
+					color: var(--color-primary);
+				}
+			}
 		}
 	}
 }
 
-.nav {
+.layout__header-nav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -147,17 +215,17 @@ const toggleMenu = () => {
 		color: inherit;
 	}
 
-	&__header {
+	&-header {
 		display: flex;
 		justify-content: space-evenly;
 		align-items: center;
 	}
 
-	&__burger {
+	&-burger {
 		display: none;
 	}
 
-	&__menu {
+	&-menu {
 		display: flex;
 		gap: 4rem;
 
@@ -182,7 +250,7 @@ const toggleMenu = () => {
 		}
 	}
 
-	&__mobile {
+	&-mobile {
 		display: none;
 
 		&-list {
@@ -219,17 +287,17 @@ const toggleMenu = () => {
 
 /* Responsive Design */
 @media (max-width: 1280px) {
-	.nav {
-		&__menu {
+	.layout__header-nav {
+		&-menu {
 			display: none;
 		}
 
-		&__header {
+		&-header {
 			justify-content: space-between;
 			width: 100%;
 		}
 
-		&__burger {
+		&-burger {
 			background: transparent;
 			border: none;
 			cursor: pointer;
@@ -244,7 +312,7 @@ const toggleMenu = () => {
 			}
 		}
 
-		&__mobile {
+		&-mobile {
 			display: block;
 			position: absolute;
 			top: 100%;
@@ -252,6 +320,20 @@ const toggleMenu = () => {
 			right: 0;
 			z-index: 1000;
 			background: var(--bg-base);
+		}
+	}
+
+	.layout__footer {
+		&-wrapper {
+			flex-direction: column;
+			gap: 1rem;
+			text-align: center;
+		}
+		&-copyright {
+			justify-content: center;
+		}
+		&-social {
+			justify-content: center;
 		}
 	}
 }

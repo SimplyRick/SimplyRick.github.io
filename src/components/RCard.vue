@@ -37,14 +37,14 @@ export default {
 </script>
 
 <template>
-	<div :class="`card-component m--${cardSize}`">
+	<div :class="`card card--${cardSize}`">
 		<header v-if="title">
 			<!-- Header part -->
-			<div :class="`header-container--${cardSize}`">
-				<h2>{{ title }}</h2>
+			<div :class="`card__header card__header--${cardSize}`">
+				<h2 class="card__header-title">{{ title }}</h2>
 				<p
 					v-if="subtitle"
-					class="subtitle">
+					class="card__header-subtitle">
 					{{ subtitle }}
 				</p>
 			</div>
@@ -55,7 +55,7 @@ export default {
 				v-if="avatarSource"
 				:href="avatarRedirect">
 				<img
-					:class="`avatar avatar--${cardSize}`"
+					:class="`card__avatar card__avatar--${cardSize}`"
 					:src="avatarSource"
 					alt="Avatar" />
 			</component>
@@ -63,14 +63,14 @@ export default {
 		<span
 			v-if="title"
 			class="divider" />
-		<main class="card-content">
+		<main class="card__content">
 			<slot />
 		</main>
 	</div>
 </template>
 
 <style scoped lang="less">
-.card-component {
+.card {
 	display: flex;
 	flex-direction: column;
 	padding: 1rem;
@@ -78,15 +78,15 @@ export default {
 	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
 	background-color: var(--card-background);
 
-	&.m--small {
+	&--small {
 		width: calc(100% / 3 - 3rem);
 		height: 300px;
 	}
-	&.m--medium {
+	&--medium {
 		width: calc(100% / 2 - 3rem);
 		height: 250px;
 	}
-	&.m--large {
+	&--large {
 		width: 100%;
 		height: 200px;
 	}
@@ -97,17 +97,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 
-	h2 {
-		margin: auto;
-	}
-
-	p {
-		margin: auto;
-		font-size: 0.875rem;
-		color: var(--text-secondary);
-	}
-
-	.header-container {
+	.card__header {
 		&--small {
 			height: 55px;
 		}
@@ -117,9 +107,19 @@ header {
 		&--large {
 			height: 75px;
 		}
+
+		&-title {
+			margin: auto;
+		}
+
+		&-subtitle {
+			margin: auto;
+			font-size: 0.875rem;
+			color: var(--text-secondary);
+		}
 	}
 
-	.avatar {
+	.card__avatar {
 		border-radius: 50%;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 
@@ -152,8 +152,7 @@ header {
 	margin: 0.5rem 0;
 }
 
-.card-content {
-	margin: auto;
+.card__content {
 	overflow-y: auto;
 	scrollbar-width: thin;
 	scrollbar-color: var(--border-medium) transparent;
@@ -162,10 +161,10 @@ header {
 }
 
 @media (max-width: 1280px) {
-	.card-component {
-		&.m--small,
-		&.m--medium,
-		&.m--large {
+	.card {
+		&--small,
+		&--medium,
+		&--large {
 			width: 100%;
 			height: 300px;
 		}
@@ -176,7 +175,7 @@ header {
 		align-items: center;
 		gap: 0.5rem;
 
-		.header-container {
+		.card__header {
 			&--small,
 			&--medium,
 			&--large {
@@ -184,7 +183,7 @@ header {
 			}
 		}
 
-		.avatar {
+		.card__avatar {
 			&--small,
 			&--medium,
 			&--large {
@@ -196,29 +195,26 @@ header {
 }
 
 @media (max-width: 480px) {
-	.card-component {
-		padding: 0.5rem;
-	}
-
 	header {
 		flex-direction: row;
 
-		h2 {
-			font-size: 1.5rem;
-		}
-		p {
-			font-size: 0.75rem;
-		}
-
-		.header-container {
+		.card__header {
 			&--small,
 			&--medium,
 			&--large {
 				height: 55px;
 			}
+
+			&-title {
+				font-size: 1.5rem;
+			}
+
+			&-subtitle {
+				font-size: 0.75rem;
+			}
 		}
 
-		.avatar {
+		.card__avatar {
 			&--small,
 			&--medium,
 			&--large {
